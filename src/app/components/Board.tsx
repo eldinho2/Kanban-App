@@ -6,9 +6,6 @@ import TaskColumn from "./TaskColumn";
 import AddTask from "./AddTask";
 
 function Board() {
-  const [newTaskColumn, setNewTaskColumn] = useState([{title: "teste"}]);
-  console.log('newTaskColumn',newTaskColumn);
-  
   const [inProgressTaskColumn, setInProgressTaskColumn] = useState([]);
   console.log('inProgressTaskColumn',inProgressTaskColumn);
   const [pausedTaskColumn, setPausedTaskColumn] = useState([]);
@@ -16,7 +13,7 @@ function Board() {
   const [concludedTaskColumn, setConcludedTaskColumn] = useState([]);
   console.log('concludedTaskColumn',concludedTaskColumn);
 
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState([{ title: "teste1"}]);
 
   const handleAddItem = (title: string) => {
     console.log(title);
@@ -32,11 +29,16 @@ function Board() {
     console.log(conteiner);
     
     const index = event.active.data.current.index ?? 0;
+    console.log('index',index);
+    
     const parent = event.active.data.current.parent ?? 'New';
+    console.log('parent',parent);
+
     const title = event.active.data.current.title ?? '';
+    console.log('title',title);
 
     if (conteiner === 'New') {
-      setNewTaskColumn([...newTaskColumn, {title: title}]);
+      setItems([...items, {title: title}]);
     } else if (conteiner === 'In Progress') {
       setInProgressTaskColumn([...inProgressTaskColumn, {title: title}]);
     } else if (conteiner === 'Paused') {
@@ -45,8 +47,18 @@ function Board() {
       setConcludedTaskColumn([...concludedTaskColumn, {title: title}]);
     }
 
-    
-
+    if (parent === 'In Progress') {
+      inProgressTaskColumn.splice(index, 1);
+      setInProgressTaskColumn([...inProgressTaskColumn]);
+    }
+    if (parent === 'Paused') {
+      pausedTaskColumn.splice(index, 1);
+      setPausedTaskColumn([...pausedTaskColumn]);
+    }
+    if (parent === 'Concluded') {
+      concludedTaskColumn.splice(index, 1);
+      setConcludedTaskColumn([...concludedTaskColumn]);
+    }
   }
 
   

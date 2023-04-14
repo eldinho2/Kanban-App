@@ -25,7 +25,7 @@ export default function TaskColumn({name, items}) {
   })
 
   return (
-    <div ref={setNodeRef} style={{transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined, transition: transition ? transition : undefined}} {...attributes} {...listeners}>
+    <div className="h-screen w-[300px] bg-slate-600 m-4" ref={setNodeRef} style={{transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined, transition: transition ? transition : undefined}} {...attributes} {...listeners}>
       <div>
         <h1>{name}</h1>
         {items.map((item, index) => {
