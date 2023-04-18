@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -15,8 +15,9 @@ const customStyles = {
 };
 
 
-export default function AddTask({ addCard }) {
+export default function AddTask({ addCard, items }) {
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [error, setError] = useState(false);
   const [newTask, setNewTask] = useState({
     title: '',
   });
@@ -33,7 +34,6 @@ export default function AddTask({ addCard }) {
   }
 
   const handleAddTask = (e) => {
-    console.log(newTask);
     handleModal();
     e.preventDefault();
     addCard(newTask);
@@ -41,6 +41,11 @@ export default function AddTask({ addCard }) {
       title: '',
     });
   }
+
+  useEffect(() => {
+    const taskExists = items.find((item) => item.title === newTask.title);
+    setError(taskExists);
+  }, [items, newTask]);
   
   return (
     <div>
@@ -57,7 +62,8 @@ export default function AddTask({ addCard }) {
         <h1>Add Task</h1>
         <form>
           <input type="text" name="title" onChange={onFormChange} value={newTask.title} />
-          <button onClick={handleAddTask}>Add</button>
+          {error && <p>Task already exists</p>}
+          <button disabled={error} onClick={handleAddTask}>Add</button>
           <button onClick={handleModal}>Close</button>
         </form>
       </div>

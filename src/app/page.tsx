@@ -1,6 +1,6 @@
 import Aside from "./components/Aside";
 import Header from "./components/Header";
-import Board from "./components/Board";
+import Board from "./components/KanbanBoard/Board";
 
 export default function Home() {
   return (
