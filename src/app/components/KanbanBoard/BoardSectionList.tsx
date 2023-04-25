@@ -148,7 +148,7 @@ function BoardSectionList() {
       >
         <div className="flex m-10 gap-6">
           {Object.keys(board).map((taskKey) => (
-            <div className="w-[200px]" key={taskKey}>
+            <div className="w-[400px]" key={taskKey}>
             {taskKey === 'todo' && <AddTask items={boardSectionsNoTreatment} set={setboardSectionsNoTreatment}/>}
               <BoardSection id={taskKey} title={taskKey} tasks={board[taskKey]} />
             </div>

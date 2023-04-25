@@ -23,7 +23,7 @@ function BoardSection({id, title, tasks}: BoardSectionProps) {
       <div>
         <h2>{title}</h2>
       </div>
-      <div className='flex flex-col bg-gray-700' ref={setNodeRef}>
+      <div className='flex flex-col bg-gray-700 p-4 w-[400px]' ref={setNodeRef}>
         <SortableContext id={id} items={tasks} strategy={verticalListSortingStrategy}  >
           {tasks.map((task) => (
             <div key={task.id}>

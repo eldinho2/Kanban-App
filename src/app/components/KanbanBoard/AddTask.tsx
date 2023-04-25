@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { v4 as uuidv4 } from "uuid";
 
+
 import {Task} from '@/app/Types';
+
+import { FormEvent, ChangeEvent  } from 'react';
 
 const customStyles = {
   content: {
@@ -31,14 +34,17 @@ export default function AddTask({ set, items }: { set: React.Dispatch<React.SetS
     setIsOpen(!modalIsOpen);
   }
 
-  const onFormChange = (e) => {
+  const onFormChange = (event:ChangeEvent<HTMLInputElement>) => {
+    
+    const { target } = event;
+    
     setNewTask({
       ...newTask,
-      [e.target.name]: e.target.value,
+      [target.name]: target.value,
     });
   }
 
-  const handleAddTask = (e) => {
+  const handleAddTask = (e:FormEvent) => {
     handleModal();
     e.preventDefault();
     set([...items, newTask]);
