@@ -3,3 +3,10 @@ export type Task = {
   title: string;
   isInBoard: string;
 } 
+
+export type BoardSections = {
+  [name: string]: Task[];
+};
+
+
+export type Status = 'todo' | 'in-progress' | 'completed';

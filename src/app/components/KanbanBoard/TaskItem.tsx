@@ -7,7 +7,7 @@ interface TaskItemProps {
 function TaskItem({item}: TaskItemProps) {
   return (
     <div>
-      <div>
+      <div className="p-4 rounded bg-slate-300">
         {item.title}
       </div>
     </div>

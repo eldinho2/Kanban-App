@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
+import { v4 as uuidv4 } from "uuid";
+
+import {Task} from '@/app/Types';
 
 const customStyles = {
   content: {
@@ -15,11 +18,13 @@ const customStyles = {
 };
 
 
-export default function AddTask({ addCard, items }) {
+export default function AddTask({ set, items }: { set: React.Dispatch<React.SetStateAction<Task[]>>, items: Task[] }) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [error, setError] = useState(false);
   const [newTask, setNewTask] = useState({
+    id: uuidv4(),
     title: '',
+    isInBoard: 'todo',
   });
 
   const handleModal = () => {
@@ -36,15 +41,17 @@ export default function AddTask({ addCard, items }) {
   const handleAddTask = (e) => {
     handleModal();
     e.preventDefault();
-    addCard(newTask);
+    set([...items, newTask]);
     setNewTask({
+      id: uuidv4(),
       title: '',
+      isInBoard: 'todo',
     });
   }
 
   useEffect(() => {
     const taskExists = items.find((item) => item.title === newTask.title);
-    setError(taskExists);
+    setError(!!taskExists);
   }, [items, newTask]);
   
   return (
