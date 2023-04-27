@@ -11,7 +11,7 @@ function Header() {
       </div>
       <div className="flex justify-center items-center h-[100px] w-full gap-80"> 
        <h1 className="m-4 text-white text-xl font-bold">
-        Lancamento da nova Plataforma
+       Nova Plataforma
       </h1>
       </div> 
     </header>

@@ -28,56 +28,25 @@ function BoardSectionList() {
   const [boardSectionsNoTreatment, setboardSectionsNoTreatment] = useState([
     {
     id: uuidv4(),
-    title: 'Task 1',
+    title: 'Construir UI da pagina de Gerenciamento de Tarefas',
     img: `https://randomuser.me/api/portraits/men/61.jpg`,
     isInBoard: 'todo',
     },
     {
     id: uuidv4(),
-    title: 'Task 2',
+    title: 'Adicionar funcionalidade de adicionar novo Board',
     img: `https://randomuser.me/api/portraits/women/26.jpg`,
     isInBoard: 'todo',
     },
     {
-      id: uuidv4(),
-      title: 'Task 2',
-      img: `https://randomuser.me/api/portraits/women/26.jpg`,
-      isInBoard: 'todo',
-      },
-      {
-        id: uuidv4(),
-        title: 'Task 2',
-        img: `https://randomuser.me/api/portraits/women/26.jpg`,
-        isInBoard: 'todo',
-        },
-        {
-          id: uuidv4(),
-          title: 'Task 2',
-          img: `https://randomuser.me/api/portraits/women/26.jpg`,
-          isInBoard: 'todo',
-          },
-          {
-            id: uuidv4(),
-            title: 'Task 2',
-            img: `https://randomuser.me/api/portraits/women/26.jpg`,
-            isInBoard: 'todo',
-            },
-            {
-              id: uuidv4(),
-              title: 'Task 2',
-              img: `https://randomuser.me/api/portraits/women/26.jpg`,
-              isInBoard: 'todo',
-              },
-
-    {
     id: uuidv4(),
-    title: 'Task 3',
+    title: 'Desenvolvendo input de email e senha',
     img: `https://randomuser.me/api/portraits/men/58.jpg`,
     isInBoard: 'in-progress',
     },
     {
     id: uuidv4(),
-    title: 'Task 4',
+    title: 'Escrever testes para a barra de pesquisa',
     img: `https://randomuser.me/api/portraits/men/65.jpg`,
     isInBoard: 'completed',
     },

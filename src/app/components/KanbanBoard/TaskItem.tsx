@@ -8,14 +8,14 @@ interface TaskItemProps {
 function TaskItem({item}: TaskItemProps) {
   return (
       <div className="p-3 m-4 rounded bg-[#2c2c38] flex flex-col">
-        <h1 className="text-[#f0f0f7]">{item.title}</h1>
+        <h1 className="text-[#f0f0f7] font-semibold">{item.title}</h1>
         <i className="flex justify-end">
           <Image
             src={item.img}
             alt={item.title}
             width={35}
             height={35}
-            className="rounded-full"
+            className="rounded-full m-2"
             quality={100}
           />
         </i>
