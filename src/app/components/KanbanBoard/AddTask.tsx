@@ -22,7 +22,11 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#21212d',
     color: "#e8e9eb",
+    border: ""
   },
+  overlay: {
+    backgroundColor: 'rgba(98, 98, 105, 0.75)',
+  }
 };
 
 
@@ -83,12 +87,14 @@ export default function AddTask({ set, columnTitle }: AddTaskType) {
       contentLabel="Example Modal"
       ariaHideApp={false}
     >
-      <div>
-        <h1>Add Task</h1>
-        <form>
+      <div className='flex flex-col'>
+        <h1 className='flex justify-center m-3 uppercase text-sm font-medium'>Add Task</h1>
+        <form className='flex flex-col'>
           <input className='text-zinc-200 bg-slate-400' type="text" name="title" onChange={onFormChange} value={newTask.title} />
-          <button disabled={error} onClick={handleAddTask}>Add</button>
-          <button onClick={handleModal}>Close</button>
+          <div className='flex justify-evenly mt-3'>
+            <button className='bg-green-400 hover:bg-green-200 disabled:bg-slate-100' disabled={error} onClick={handleAddTask}>Add</button>
+            <button className='bg-red-400 hover:bg-red-200' onClick={handleModal}>Close</button>
+          </div>
         </form>
       </div>
     </Modal>
