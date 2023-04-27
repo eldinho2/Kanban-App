@@ -28,7 +28,7 @@ const customStyles = {
 
 export default function AddTask({ set, columnTitle }: AddTaskType) {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(true);
   const [columnName, setColumnName] = useState(columnTitle)
   const [newTask, setNewTask] = useState({
     id: uuidv4(),
@@ -48,6 +48,10 @@ export default function AddTask({ set, columnTitle }: AddTaskType) {
       ...newTask,
       [target.name]: target.value,
     });
+
+    if (target.value.length > 0) {
+      setError(false)
+    }
   }
 
   const handleAddTask = (e:FormEvent) => {
@@ -63,8 +67,9 @@ export default function AddTask({ set, columnTitle }: AddTaskType) {
     setNewTask({
       id: uuidv4(),
       title: '',
-      isInBoard: 'todo',
+      isInBoard: columnName,
     });
+    setError(true)
   }
     
   
@@ -81,8 +86,7 @@ export default function AddTask({ set, columnTitle }: AddTaskType) {
       <div>
         <h1>Add Task</h1>
         <form>
-          <input type="text" name="title" onChange={onFormChange} value={newTask.title} />
-          {error && <p>Task already exists</p>}
+          <input className='text-zinc-200 bg-slate-400' type="text" name="title" onChange={onFormChange} value={newTask.title} />
           <button disabled={error} onClick={handleAddTask}>Add</button>
           <button onClick={handleModal}>Close</button>
         </form>

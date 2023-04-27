@@ -22,7 +22,7 @@ function BoardSection({id, title, tasks, set}: BoardSectionProps) {
 
   const styleBoardTitleDots = (title : string) => {
     if (title === 'todo') {
-      return 'bg-red-300';
+      return 'bg-[#43c3e8]';
     }
     if (title === 'in-progress') {
       return 'bg-yellow-300';
@@ -36,8 +36,8 @@ function BoardSection({id, title, tasks, set}: BoardSectionProps) {
   const isOverContainer = over?.data?.current?.sortable.containerId === id;
   return (
     <div className='flex flex-col justify-center'>
-      <div className="flex items-center justify-center gap-1 text-lg font-semibold">
-        <div className={`rounded-full ${title === 'todo' ? "bg-red-300" : "bg-slate-500"} w-2 h-2`}></div>
+      <div className="flex items-center justify-center gap-2 text-lg font-semibold">
+        <div className={`rounded-full ${styleBoardTitleDots(title)} w-4 h-4`}></div>
         <h2 className='text-[#7e8190] uppercase'>{title}</h2>
         <span className='text-[#7e8190]'>({tasks.length})</span>
         <AddTask columnTitle={title} set={set} />
