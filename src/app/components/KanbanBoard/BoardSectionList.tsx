@@ -23,7 +23,6 @@ import { arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 import TaskItem from './TaskItem';
 import BoardSection from "./BoardSection";
 import {initializeBoard, findBoardSectionContainer}  from './utils/board';
-import AddTask from "./AddTask";
 
 function BoardSectionList() {
 
@@ -173,8 +172,7 @@ function BoardSectionList() {
         <div className="flex m-10 gap-6">
           {Object.keys(board).map((taskKey) => (
             <div className="w-[400px]" key={taskKey}>
-            {taskKey === 'todo' && <AddTask set={setBoard}/>}
-              <BoardSection id={taskKey} title={taskKey} tasks={board[taskKey]} />
+              <BoardSection set={setBoard} id={taskKey} title={taskKey} tasks={board[taskKey]} />
             </div>
           ))}
           <DragOverlay

@@ -1,7 +1,7 @@
 export type Task = {
   id: string;
   title: string;
-  isInBoard: string;
+  isInBoard: string | undefined;
 } 
 
 export type BoardSections = {

@@ -16,9 +16,7 @@ function SortableTaskItem({children, id}: SortableTaskItemProps) {
     transform,
     transition,
     isDragging,
-    isOver,
     over,
-    active,
   } = useSortable({ id });
 
   const style = {
@@ -27,9 +25,6 @@ function SortableTaskItem({children, id}: SortableTaskItemProps) {
     opacity: isDragging ? 0.5 : undefined,
     cursor: 'grab',
   }
-
-  const isOverContainer = over?.id === id;
-
 
   return (
   <div ref={setNodeRef} style={style} {...attributes} {...listeners}>

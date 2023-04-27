@@ -7,6 +7,11 @@ import {Task} from '@/app/Types';
 
 import { FormEvent, ChangeEvent  } from 'react';
 
+interface AddTaskType {
+  set: React.Dispatch<React.SetStateAction<{[key: string]: Task[];}>>,
+  columnTitle: string,
+}
+
 const customStyles = {
   content: {
     top: '50%',
@@ -21,13 +26,14 @@ const customStyles = {
 };
 
 
-export default function AddTask({ set }: React.PropsWithChildren<{set: React.Dispatch<React.SetStateAction<{[key: string]: Task[];}>>}>) {
+export default function AddTask({ set, columnTitle }: AddTaskType) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [error, setError] = useState(false);
+  const [columnName, setColumnName] = useState(columnTitle)
   const [newTask, setNewTask] = useState({
     id: uuidv4(),
     title: '',
-    isInBoard: 'todo',
+    isInBoard: columnName,
   });
 
   const handleModal = () => {
@@ -60,11 +66,11 @@ export default function AddTask({ set }: React.PropsWithChildren<{set: React.Dis
       isInBoard: 'todo',
     });
   }
+    
   
   return (
     <div>
-    <div>Adiconar task</div>
-    <button onClick={handleModal}>Add</button>
+    <button onClick={handleModal} className='w-3 h-3'>+</button>
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={handleModal}

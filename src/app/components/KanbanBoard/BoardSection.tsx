@@ -5,21 +5,20 @@ import { Task } from '@/app/Types';
 
 import SortableTaskItem from './SortableTaskItem';
 import TaskItem from './TaskItem';
-import { useEffect } from 'react';
+import AddTask from "./AddTask";
 
 
 interface BoardSectionProps {
   id: string;
   title: string;
   tasks: Task[];
+  set: React.Dispatch<React.SetStateAction<{[key: string]: Task[];}>>;
 }
 
-function BoardSection({id, title, tasks}: BoardSectionProps) {
-  const { setNodeRef, isOver, over } = useDroppable({
+function BoardSection({id, title, tasks, set}: BoardSectionProps) {
+  const { setNodeRef, over } = useDroppable({
     id,
   })
-
-  console.log(title);
 
   const styleBoardTitleDots = (title : string) => {
     if (title === 'todo') {
@@ -41,6 +40,7 @@ function BoardSection({id, title, tasks}: BoardSectionProps) {
         <div className={`rounded-full ${title === 'todo' ? "bg-red-300" : "bg-slate-500"} w-2 h-2`}></div>
         <h2 className='text-[#7e8190] uppercase'>{title}</h2>
         <span className='text-[#7e8190]'>({tasks.length})</span>
+        <AddTask columnTitle={title} set={set} />
       </div>
       <div className='flex flex-col p-4' ref={setNodeRef}>
         <SortableContext id={id} items={tasks} strategy={verticalListSortingStrategy}  >
