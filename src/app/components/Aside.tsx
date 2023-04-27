@@ -35,7 +35,7 @@ function Aside() {
                 alt="Kanban"
                 width={20}
                 height={20}
-                className="rotate-90"
+                className="t"
               />
             </i>
             <h1>RoadMap</h1>

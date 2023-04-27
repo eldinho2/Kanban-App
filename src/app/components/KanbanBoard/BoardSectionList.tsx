@@ -23,6 +23,7 @@ import { arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 import TaskItem from './TaskItem';
 import BoardSection from "./BoardSection";
 import {initializeBoard, findBoardSectionContainer}  from './utils/board';
+import AddColumn from "./AddColumn";
 
 function BoardSectionList() {
   const [boardSectionsNoTreatment, setboardSectionsNoTreatment] = useState([
@@ -150,7 +151,6 @@ function BoardSectionList() {
     return null;
   }
 
-
   const task = activeTaskId ? getTaskById(board, activeTaskId) : null;
 
   const dropAnimation: DropAnimation = {
@@ -172,20 +172,18 @@ function BoardSectionList() {
       onDragOver={handleDragOver}
       onDragEnd={hanldeDragEnd}
       >
-        <div className="flex m-10 gap-6 h-[600px] overflow-auto">
+        <div className="flex m-10 gap-6 h-[600px] w-[1000px] overflow-auto">
           {Object.keys(board).map((taskKey) => (
             <div className="w-[300px]" key={taskKey}>
               <BoardSection set={setBoard} id={taskKey} title={taskKey} tasks={board[taskKey]} />
             </div>
           ))}
+          <AddColumn setBoard={setBoard} acState={board} />
           <DragOverlay
             dropAnimation={dropAnimation}
             >
             {activeTaskId ? <TaskItem item={task} /> : null}
           </DragOverlay>
-        </div>
-        <div className="cursor-pointer m-10 w-[200px] h-[600px] border-b-white border-2 border-dashed bg-[#21212d] flex items-center">
-          <h1 className="text-white text-2xl font-bold text-center">+ Create New Column</h1>
         </div>
       </DndContext>
     </div>
