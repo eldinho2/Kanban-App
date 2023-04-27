@@ -25,33 +25,67 @@ import BoardSection from "./BoardSection";
 import {initializeBoard, findBoardSectionContainer}  from './utils/board';
 
 function BoardSectionList() {
-
   const [boardSectionsNoTreatment, setboardSectionsNoTreatment] = useState([
     {
     id: uuidv4(),
     title: 'Task 1',
+    img: `https://randomuser.me/api/portraits/men/61.jpg`,
     isInBoard: 'todo',
     },
     {
     id: uuidv4(),
     title: 'Task 2',
+    img: `https://randomuser.me/api/portraits/women/26.jpg`,
     isInBoard: 'todo',
     },
     {
+      id: uuidv4(),
+      title: 'Task 2',
+      img: `https://randomuser.me/api/portraits/women/26.jpg`,
+      isInBoard: 'todo',
+      },
+      {
+        id: uuidv4(),
+        title: 'Task 2',
+        img: `https://randomuser.me/api/portraits/women/26.jpg`,
+        isInBoard: 'todo',
+        },
+        {
+          id: uuidv4(),
+          title: 'Task 2',
+          img: `https://randomuser.me/api/portraits/women/26.jpg`,
+          isInBoard: 'todo',
+          },
+          {
+            id: uuidv4(),
+            title: 'Task 2',
+            img: `https://randomuser.me/api/portraits/women/26.jpg`,
+            isInBoard: 'todo',
+            },
+            {
+              id: uuidv4(),
+              title: 'Task 2',
+              img: `https://randomuser.me/api/portraits/women/26.jpg`,
+              isInBoard: 'todo',
+              },
+
+    {
     id: uuidv4(),
     title: 'Task 3',
+    img: `https://randomuser.me/api/portraits/men/58.jpg`,
     isInBoard: 'in-progress',
     },
     {
     id: uuidv4(),
     title: 'Task 4',
+    img: `https://randomuser.me/api/portraits/men/65.jpg`,
     isInBoard: 'completed',
     },
   ]);
 
   const initialBoard = initializeBoard(boardSectionsNoTreatment);
-  const [board, setBoard] = useState(initialBoard);
 
+  const [board, setBoard] = useState(initialBoard);
   const [activeTaskId, setActiveTaskId] = useState<null | string>(null);
 
   const sensors = useSensors(
@@ -161,7 +195,7 @@ function BoardSectionList() {
   };
 
   return (
-    <div className="bg-[#21212d]">
+    <div className="bg-[#21212d] w-full flex">
       <DndContext
       sensors={sensors}
       collisionDetection={closestCorners}
@@ -169,9 +203,9 @@ function BoardSectionList() {
       onDragOver={handleDragOver}
       onDragEnd={hanldeDragEnd}
       >
-        <div className="flex m-10 gap-6">
+        <div className="flex m-10 gap-6 h-[600px] overflow-auto">
           {Object.keys(board).map((taskKey) => (
-            <div className="w-[400px]" key={taskKey}>
+            <div className="w-[300px]" key={taskKey}>
               <BoardSection set={setBoard} id={taskKey} title={taskKey} tasks={board[taskKey]} />
             </div>
           ))}
@@ -180,6 +214,9 @@ function BoardSectionList() {
             >
             {activeTaskId ? <TaskItem item={task} /> : null}
           </DragOverlay>
+        </div>
+        <div className="cursor-pointer m-10 w-[200px] h-[600px] border-b-white border-2 border-dashed bg-[#21212d] flex items-center">
+          <h1 className="text-white text-2xl font-bold text-center">+ Create New Column</h1>
         </div>
       </DndContext>
     </div>

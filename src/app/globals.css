@@ -6,4 +6,33 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #7e8190;
+  border-radius: 5px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2c2c38;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #2c2c38;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #41414c;
 }

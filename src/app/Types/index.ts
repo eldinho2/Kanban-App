@@ -1,6 +1,7 @@
 export type Task = {
   id: string;
   title: string;
+  img: string;
   isInBoard: string | undefined;
 } 
 

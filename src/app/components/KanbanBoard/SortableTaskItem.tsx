@@ -25,7 +25,7 @@ function SortableTaskItem({children, id}: SortableTaskItemProps) {
     opacity: isDragging ? 0.5 : undefined,
     cursor: 'grab',
   }
-
+  
   return (
   <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
       {children}
