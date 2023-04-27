@@ -21,7 +21,7 @@ const customStyles = {
 };
 
 
-export default function AddTask({ set, items }: { set: React.Dispatch<React.SetStateAction<Task[]>>, items: Task[] }) {
+export default function AddTask({ set }: React.PropsWithChildren<{set: React.Dispatch<React.SetStateAction<{[key: string]: Task[];}>>}>) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [error, setError] = useState(false);
   const [newTask, setNewTask] = useState({
@@ -47,18 +47,19 @@ export default function AddTask({ set, items }: { set: React.Dispatch<React.SetS
   const handleAddTask = (e:FormEvent) => {
     handleModal();
     e.preventDefault();
-    set([...items, newTask]);
+    set((boardSection) => ({
+      ...boardSection,
+      [newTask.isInBoard]: [
+        ...boardSection[newTask.isInBoard],
+        newTask,
+      ],
+    }));
     setNewTask({
       id: uuidv4(),
       title: '',
       isInBoard: 'todo',
     });
   }
-
-  useEffect(() => {
-    const taskExists = items.find((item) => item.title === newTask.title);
-    setError(!!taskExists);
-  }, [items, newTask]);
   
   return (
     <div>

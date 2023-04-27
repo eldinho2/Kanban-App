@@ -6,11 +6,9 @@ interface TaskItemProps {
 
 function TaskItem({item}: TaskItemProps) {
   return (
-    <div>
-      <div className="p-4 m-4 rounded bg-slate-300">
-        {item.title}
+      <div className="p-4 m-4 rounded bg-[#2c2c38]">
+        <h1 className="text-[#f0f0f7]">{item.title}</h1>
       </div>
-    </div>
   )
 }
 

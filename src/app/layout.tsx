@@ -1,9 +1,9 @@
 import './globals.css'
-import { Poppins } from '@next/font/google'
+import { Roboto } from '@next/font/google'
 
-const poppins = Poppins({
+const roboto = Roboto({
   weight: ['400', '700'],
-  variable: '--font-poppins',
+  variable: '--font-roboto',
   subsets: ['latin'],
 })
 
@@ -15,7 +15,7 @@ export const metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="pt-BR">
-      <body className={`${poppins.variable} font-sans`}>
+      <body className={`${roboto.variable} font-sans`}>
           {children}
       </body>
     </html>

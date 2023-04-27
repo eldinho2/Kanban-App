@@ -10,17 +10,19 @@ import {
    useSensor,
    PointerSensor,
    KeyboardSensor,
+   TouchSensor,
    closestCorners,
    DragOverlay,
    DropAnimation,
    defaultDropAnimation,
+   defaultDropAnimationSideEffects,
 } from "@dnd-kit/core";
 import { v4 as uuidv4 } from "uuid";
 import { arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 
 import TaskItem from './TaskItem';
 import BoardSection from "./BoardSection";
-import {initializeBoard, findBoardSectionContainer, getTaskById}  from './utils/board';
+import {initializeBoard, findBoardSectionContainer}  from './utils/board';
 import AddTask from "./AddTask";
 
 function BoardSectionList() {
@@ -48,27 +50,27 @@ function BoardSectionList() {
     },
   ]);
 
-  const tasks = boardSectionsNoTreatment;
-
   const initialBoard = initializeBoard(boardSectionsNoTreatment);
   const [board, setBoard] = useState(initialBoard);
-
-  useEffect(() => {
-    const initialBoard = initializeBoard(boardSectionsNoTreatment);
-    setBoard(initialBoard);
-  }, [boardSectionsNoTreatment]);
 
   const [activeTaskId, setActiveTaskId] = useState<null | string>(null);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 250,
+        tolerance: 5,
+      },
+    }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })
   );
 
   const handleDragStart = ({active}: DragStartEvent) => {
-    setActiveTaskId(active.id as string);
+    setActiveTaskId(active.id as string);   
+    document.body.style.setProperty('cursor', 'grabbing');
   }
   
   const handleDragOver = ({active, over}:DragOverEvent) => {    
@@ -79,10 +81,10 @@ function BoardSectionList() {
     if (!activeContainer || !overContainer || activeContainer === overContainer) {
       return;
     }
-
+  
     setBoard((boardSection) => {
       const activeItems = boardSection[activeContainer];
-      const overItems = boardSection[overContainer];
+      const overItems = boardSection[overContainer];      
       const activeIndex = activeItems.findIndex(
         (item) => item.id === active.id
       );
@@ -131,14 +133,36 @@ function BoardSectionList() {
     }
 
     setActiveTaskId(null);
+    document.body.style.setProperty('cursor', 'default');
+  }
+
+  const getTaskById = (board: any, id: string) => {
+    const boardSections = Object.keys(board);
+    for (let i = 0; i < boardSections.length; i++) {
+      const boardSection = boardSections[i];
+      const task = board[boardSection].find((task: any) => task.id === id);
+      if (task) {
+        return task;
+      }
+    }
+    return null;
   }
 
 
-  const task = activeTaskId ? getTaskById(tasks, activeTaskId) : null;
+  const task = activeTaskId ? getTaskById(board, activeTaskId) : null;
 
+  const dropAnimation: DropAnimation = {
+    sideEffects: defaultDropAnimationSideEffects({
+      styles: {
+        active: {
+          opacity: '0.5',
+        },
+      },
+    }),
+  };
 
   return (
-    <div>
+    <div className="bg-[#21212d]">
       <DndContext
       sensors={sensors}
       collisionDetection={closestCorners}
@@ -149,10 +173,15 @@ function BoardSectionList() {
         <div className="flex m-10 gap-6">
           {Object.keys(board).map((taskKey) => (
             <div className="w-[400px]" key={taskKey}>
-            {taskKey === 'todo' && <AddTask items={boardSectionsNoTreatment} set={setboardSectionsNoTreatment}/>}
+            {taskKey === 'todo' && <AddTask set={setBoard}/>}
               <BoardSection id={taskKey} title={taskKey} tasks={board[taskKey]} />
             </div>
           ))}
+          <DragOverlay
+            dropAnimation={dropAnimation}
+            >
+            {activeTaskId ? <TaskItem item={task} /> : null}
+          </DragOverlay>
         </div>
       </DndContext>
     </div>
