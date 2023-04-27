@@ -80,7 +80,7 @@ export default function AddTask({ set, columnTitle }: AddTaskType) {
   
   return (
     <div>
-    <button onClick={handleModal} className='w-3 h-3'>+</button>
+    <button onClick={handleModal} className='w-3 h-3 text-[#6461b7]'>+</button>
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={handleModal}
