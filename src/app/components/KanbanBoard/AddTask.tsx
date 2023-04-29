@@ -1,6 +1,7 @@
-import React, { useState,  } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { v4 as uuidv4 } from "uuid";
+import {IoMdAdd} from 'react-icons/io';
 
 
 import {Task} from '@/app/Types';
@@ -80,7 +81,7 @@ export default function AddTask({ set, columnTitle }: AddTaskType) {
   
   return (
     <div>
-    <button onClick={handleModal} className='w-3 h-3 text-[#6461b7]'>+</button>
+    <button onClick={handleModal} className='text-3xl text-[#6461b7] hover:text-purple-950'><IoMdAdd /></button>
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={handleModal}

@@ -41,9 +41,11 @@ function BoardSection({id, title, tasks, set}: BoardSectionProps) {
       <div className="flex items-center justify-center gap-2 text-lg font-semibold">
         <div className={`rounded-full ${styleBoardTitleDots(title)} w-4 h-4`}></div>
         <h2 className='text-[#7e8190] uppercase'>{title}</h2>
-        <DeleteColumn columnTitle={title} />
         <span className='text-[#7e8190]'>({tasks.length})</span>
-        <AddTask columnTitle={title} set={set} />
+        <div className='flex gap-3 items-center'>
+          <AddTask columnTitle={title} set={set} />
+          <DeleteColumn columnTitle={title} set={set} />
+        </div>
       </div>
       <div className='flex flex-col p-4' ref={setNodeRef}>
         <SortableContext id={id} items={tasks} strategy={verticalListSortingStrategy}  >
