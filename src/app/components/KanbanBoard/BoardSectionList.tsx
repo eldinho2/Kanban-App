@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
    DndContext,
    DragStartEvent,
@@ -14,7 +14,6 @@ import {
    closestCorners,
    DragOverlay,
    DropAnimation,
-   defaultDropAnimation,
    defaultDropAnimationSideEffects,
 } from "@dnd-kit/core";
 import { v4 as uuidv4 } from "uuid";
@@ -24,6 +23,8 @@ import TaskItem from './TaskItem';
 import BoardSection from "./BoardSection";
 import {initializeBoard, findBoardSectionContainer}  from './utils/board';
 import AddColumn from "./AddColumn";
+import { snapCenterToCursor } from "./utils/snapCenterToCursor";
+import { restrictToWindowEdges } from "./utils/restrictToWindowEdges";
 
 function BoardSectionList() {
   const [boardSectionsNoTreatment, setboardSectionsNoTreatment] = useState([
@@ -164,17 +165,21 @@ function BoardSectionList() {
   };
 
   return (
-    <div className="bg-[#21212d] w-full flex">
       <DndContext
       sensors={sensors}
       collisionDetection={closestCorners}
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}
       onDragEnd={hanldeDragEnd}
+      modifiers={[snapCenterToCursor, restrictToWindowEdges]}
       >
-        <div className="flex m-10 gap-6 h-[600px] w-[1000px] overflow-auto">
+        <div className="flex justify-center items-center border-b-2 border-[#31313d] text-white text-3xl font-bold bg-[#21212d] h-14">
+        Nova Plataforma
+        </div>
+        <div className="bg-[#21212d]">
+          <div className="flex h-[668px] w-[1300px] overflow-auto">
           {Object.keys(board).map((taskKey) => (
-            <div className="w-[300px]" key={taskKey}>
+            <div className="min-w-[300px]" key={taskKey}>
               <BoardSection set={setBoard} id={taskKey} title={taskKey} tasks={board[taskKey]} />
             </div>
           ))}
@@ -184,9 +189,9 @@ function BoardSectionList() {
             >
             {activeTaskId ? <TaskItem item={task} /> : null}
           </DragOverlay>
+          </div>
         </div>
       </DndContext>
-    </div>
   )
 }
 

@@ -6,6 +6,7 @@ import { Task } from '@/app/Types';
 import SortableTaskItem from './SortableTaskItem';
 import TaskItem from './TaskItem';
 import AddTask from "./AddTask";
+import DeleteColumn from './DeleteColumn';
 
 
 interface BoardSectionProps {
@@ -34,11 +35,13 @@ function BoardSection({id, title, tasks, set}: BoardSectionProps) {
   
 
   const isOverContainer = over?.data?.current?.sortable.containerId === id;
+
   return (
-    <div className='flex flex-col justify-center'>
+    <div className='flex flex-col m-2 justify-center'>
       <div className="flex items-center justify-center gap-2 text-lg font-semibold">
         <div className={`rounded-full ${styleBoardTitleDots(title)} w-4 h-4`}></div>
         <h2 className='text-[#7e8190] uppercase'>{title}</h2>
+        <DeleteColumn columnTitle={title} />
         <span className='text-[#7e8190]'>({tasks.length})</span>
         <AddTask columnTitle={title} set={set} />
       </div>

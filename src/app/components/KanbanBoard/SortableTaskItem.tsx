@@ -16,7 +16,6 @@ function SortableTaskItem({children, id}: SortableTaskItemProps) {
     transform,
     transition,
     isDragging,
-    over,
   } = useSortable({ id });
 
   const style = {
