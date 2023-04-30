@@ -1,6 +1,6 @@
 # Kanban-App
 
-##é um aplicativo de gerenciamento de tarefas inspirado na metodologia Kanban, desenvolvido em React, TypeScript, Tailwind CSS. Permite aos usuários criar, atualizar e excluir tarefas, bem como movê-las entre as diferentes etapas do processo. Possui uma interface moderna e intuitiva. Pode ser utilizado por equipes de desenvolvimento de software, projetos de marketing e gerenciamento de projetos.
+## é um aplicativo de gerenciamento de tarefas inspirado na metodologia Kanban, desenvolvido em React, TypeScript, Tailwind CSS. Permite aos usuários criar, atualizar e excluir tarefas, bem como movê-las entre as diferentes etapas do processo. Possui uma interface moderna e intuitiva. Pode ser utilizado por equipes de desenvolvimento de software, projetos de marketing e gerenciamento de projetos.
 
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
