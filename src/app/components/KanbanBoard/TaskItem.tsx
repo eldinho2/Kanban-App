@@ -34,7 +34,8 @@ function TaskItem({item, id, set, board, columnTitle}: TaskItemProps) {
 
 
   return (
-      <div style={style} {...attributes} ref={setNodeRef}  className="p-3 m-4 w-[250px] rounded bg-[#2c2c38] flex flex-col">
+      <div style={style} {...attributes} ref={setNodeRef}  className="p-3 m-4 w-[250px] rounded bg-[#2c2c38] flex">
+        <div className="flex flex-col flex-1">
         <p className="text-[#f0f0f7] font-semibold break-words">{item.title ? item.title : 'a'}</p>
         <i>
           <Image
@@ -46,8 +47,11 @@ function TaskItem({item, id, set, board, columnTitle}: TaskItemProps) {
             quality={100}
           />
         </i>
+        </div>
+        <div className="flex justify-center items-center gap-2">
         <DeleteTask id={id} set={set} columnTitle={columnTitle} board={board} />
         <DragHandle {...listeners}/>
+        </div>
       </div>
   )
 }
