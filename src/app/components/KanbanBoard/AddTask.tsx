@@ -81,7 +81,7 @@ export default function AddTask({ set, columnTitle }: AddTaskType) {
   
   return (
     <div>
-    <button onClick={handleModal} className='text-3xl text-[#6461b7] hover:text-purple-950'><IoMdAdd /></button>
+    <button onClick={handleModal} className='text-2xl flex items-center text-[#6461b7] hover:text-purple-950'><IoMdAdd /></button>
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={handleModal}

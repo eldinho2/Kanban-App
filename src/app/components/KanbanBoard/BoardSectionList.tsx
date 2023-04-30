@@ -171,7 +171,7 @@ function BoardSectionList() {
       onDragEnd={hanldeDragEnd}
       modifiers={[restrictToWindowEdges]}
       >
-        <div className="flex justify-center items-center border-b-2 border-[#31313d] text-white text-3xl font-bold bg-[#21212d] h-14">
+        <div className="flex justify-center items-center border-b-2 border-[#31313d] text-white text-3xl font-bold bg-[#21212d] h-16">
         Nova Plataforma
         </div>
         <div className="bg-[#21212d]">

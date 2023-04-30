@@ -1,4 +1,5 @@
 
+import React, { useState } from 'react';
 import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { Task } from '@/app/Types';
@@ -20,21 +21,7 @@ function BoardSection({id, title, tasks, set, board}: BoardSectionProps) {
   const { setNodeRef, over } = useDroppable({
     id,
   })
-
-  function generateHexColor() {
-    const hexValues = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += hexValues[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
-  const color = generateHexColor();
-
-  console.log(color);
   
-
-
   const styleBoardTitleDots = (title : string) => {
 
     const titles = ['todo', 'in-progress', 'completed'];
@@ -49,7 +36,7 @@ function BoardSection({id, title, tasks, set, board}: BoardSectionProps) {
       return 'bg-green-300';
     }
     if (!titles.includes(title)) {
-      return `bg-[${color}]`;
+      return `bg-[#7e8190]`;
     }
   }
   
@@ -57,7 +44,7 @@ function BoardSection({id, title, tasks, set, board}: BoardSectionProps) {
   const isOverContainer = over?.data?.current?.sortable.containerId === id;
 
   return (
-    <div className='flex flex-col m-2 justify-center'>
+    <div className='flex flex-col m-2 justify-center items-center'>
       <div className="flex items-center justify-center gap-2 text-lg font-semibold">
         <div className={`rounded-full ${styleBoardTitleDots(title)} w-4 h-4`}></div>
         <h2 className='text-[#7e8190] uppercase'>{title}</h2>

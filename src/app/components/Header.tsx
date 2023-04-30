@@ -17,7 +17,7 @@ function Header() {
       </div>
       <aside className="w-[246px] bg-[#2c2c38] h-[623px] overflow-hidden">
         <section className="flex flex-col items-center">
-          <p className="text-[#7d8493] font-bold mt-10">Todos os quadros (3)</p>
+          <p className="text-[#b1b5c0] font-bold mt-10">Todos os quadros (3)</p>
           <div className="flex flex-col gap-6 justify-center mt-8">
             <div className="flex items-center pl-3 cursor-pointer w-48 text-[#7d8493] font-semibold hover:text-white hover:border-2 rounded-e-xl hover:bg-[#645fc6] border-[#645fc6]">
               <i>
@@ -55,7 +55,6 @@ function Header() {
             </div>
           </div>
         </section>
-        <div className="flex justify-center mt-20">darkmode</div>
       </aside>
     </header>
   );

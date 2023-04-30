@@ -20,7 +20,7 @@ const DeleteColumn = ({columnTitle, set}: DeleteColumnType) => {
   
   return (
     <div className="">
-      <button onClick={handleDeleteColumn} className="text-3xl hover:text-red-500 text-red-900"><MdDeleteForever/></button>
+      <button onClick={handleDeleteColumn} className="text-2xl flex items-center hover:text-red-500 text-red-900"><MdDeleteForever/></button>
     </div>
   )
 
