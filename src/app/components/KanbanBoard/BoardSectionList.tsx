@@ -23,7 +23,6 @@ import TaskItem from './TaskItem';
 import BoardSection from "./BoardSection";
 import {initializeBoard, findBoardSectionContainer}  from './utils/board';
 import AddColumn from "./AddColumn";
-import { snapCenterToCursor } from "./utils/snapCenterToCursor";
 import { restrictToWindowEdges } from "./utils/restrictToWindowEdges";
 
 function BoardSectionList() {
@@ -73,8 +72,7 @@ function BoardSectionList() {
   );
 
   const handleDragStart = ({active}: DragStartEvent) => {
-    setActiveTaskId(active.id as string);   
-    document.body.style.setProperty('cursor', 'grabbing');
+    setActiveTaskId(active.id as string);
   }
   
   const handleDragOver = ({active, over}:DragOverEvent) => {    
@@ -171,7 +169,7 @@ function BoardSectionList() {
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}
       onDragEnd={hanldeDragEnd}
-      modifiers={[snapCenterToCursor, restrictToWindowEdges]}
+      modifiers={[restrictToWindowEdges]}
       >
         <div className="flex justify-center items-center border-b-2 border-[#31313d] text-white text-3xl font-bold bg-[#21212d] h-14">
         Nova Plataforma
@@ -179,15 +177,15 @@ function BoardSectionList() {
         <div className="bg-[#21212d]">
           <div className="flex h-[668px] w-[1300px] overflow-auto">
           {Object.keys(board).map((taskKey) => (
-            <div className="min-w-[300px]" key={taskKey}>
-              <BoardSection set={setBoard} id={taskKey} title={taskKey} tasks={board[taskKey]} />
+            <div className="min-w-[330px]" key={taskKey}>
+              <BoardSection set={setBoard} id={taskKey} title={taskKey} board={board} tasks={board[taskKey]} />
             </div>
           ))}
           <AddColumn setBoard={setBoard} acState={board} />
           <DragOverlay
             dropAnimation={dropAnimation}
             >
-            {activeTaskId ? <TaskItem item={task} /> : null}
+            {activeTaskId ? <TaskItem id={activeTaskId} item={task} /> : null}
           </DragOverlay>
           </div>
         </div>

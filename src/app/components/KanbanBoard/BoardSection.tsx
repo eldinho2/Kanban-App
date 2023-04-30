@@ -3,7 +3,6 @@ import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { Task } from '@/app/Types';
 
-import SortableTaskItem from './SortableTaskItem';
 import TaskItem from './TaskItem';
 import AddTask from "./AddTask";
 import DeleteColumn from './DeleteColumn';
@@ -16,7 +15,7 @@ interface BoardSectionProps {
   set: React.Dispatch<React.SetStateAction<{[key: string]: Task[];}>>;
 }
 
-function BoardSection({id, title, tasks, set}: BoardSectionProps) {
+function BoardSection({id, title, tasks, set, board}: BoardSectionProps) {
   const { setNodeRef, over } = useDroppable({
     id,
   })
@@ -51,9 +50,7 @@ function BoardSection({id, title, tasks, set}: BoardSectionProps) {
         <SortableContext id={id} items={tasks} strategy={verticalListSortingStrategy}  >
           {tasks.map((task) => (
             <div className={isOverContainer ? "bg-[#35353e] border-dashed border-2 border-[#4b4b54]" : undefined} key={task.id}>
-              <SortableTaskItem id={task.id}>
-                <TaskItem item={task} />
-              </SortableTaskItem>
+                <TaskItem set={set} id={task.id} columnTitle={title} item={task} board={board} />
             </div>
           ))}
         </SortableContext>
