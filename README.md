@@ -1,5 +1,7 @@
 # Kanban-App
 
+##é um aplicativo de gerenciamento de tarefas inspirado na metodologia Kanban, desenvolvido em React, TypeScript, Tailwind CSS. Permite aos usuários criar, atualizar e excluir tarefas, bem como movê-las entre as diferentes etapas do processo. Possui uma interface moderna e intuitiva. Pode ser utilizado por equipes de desenvolvimento de software, projetos de marketing e gerenciamento de projetos.
+
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-licença">Licença</a>
@@ -22,7 +24,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - TypeScript
 - React.js
 - Next.js
-- HTML e CSS
+- Tailwind CSS
 
 
 ## :memo: Licença
@@ -38,7 +40,7 @@ git clone https://github.com/eldinho2/Kanban-App.git
 ~~~
 ## Acesse o diretório do projeto:
 ~~~javascript
-cd Travel-App
+cd Kanban-App
 ~~~
 ## Instale as dependências do projeto:
 ~~~javascript
