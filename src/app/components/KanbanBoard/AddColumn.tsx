@@ -42,7 +42,6 @@ const AddColumn = ({ setBoard, acState }:AddColumnType) => {
       setError(true);
       return;
     }
-    console.log(acState);
     setBoard({
       ...acState,
       [columnName]: [],

@@ -21,15 +21,35 @@ function BoardSection({id, title, tasks, set, board}: BoardSectionProps) {
     id,
   })
 
+  function generateHexColor() {
+    const hexValues = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += hexValues[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+  const color = generateHexColor();
+
+  console.log(color);
+  
+
+
   const styleBoardTitleDots = (title : string) => {
+
+    const titles = ['todo', 'in-progress', 'completed'];
+
     if (title === 'todo') {
       return 'bg-[#43c3e8]';
     }
     if (title === 'in-progress') {
-      return 'bg-yellow-300';
+      return `bg-[#9b1418]`;
     }
     if (title === 'completed') {
       return 'bg-green-300';
+    }
+    if (!titles.includes(title)) {
+      return `bg-[${color}]`;
     }
   }
   
