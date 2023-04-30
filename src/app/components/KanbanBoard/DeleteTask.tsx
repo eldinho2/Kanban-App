@@ -5,8 +5,9 @@ import {Task} from '@/app/Types';
 
 interface DeleteColumnType {
   id: string,
-  set?: React.Dispatch<React.SetStateAction<{[key: string]: Task[];}>>,
-  acState?: {[key: string]: Task[]};
+  set: React.Dispatch<React.SetStateAction<{[key: string]: Task[];}>>,
+  board?: {[key: string]: Task[];},
+  columnTitle: string,
 }
 
 const DeleteTask = ({id, set, board, columnTitle}: DeleteColumnType) => {

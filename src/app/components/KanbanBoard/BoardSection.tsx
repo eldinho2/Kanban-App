@@ -13,6 +13,7 @@ interface BoardSectionProps {
   title: string;
   tasks: Task[];
   set: React.Dispatch<React.SetStateAction<{[key: string]: Task[];}>>;
+  board: {[key: string]: Task[];};
 }
 
 function BoardSection({id, title, tasks, set, board}: BoardSectionProps) {

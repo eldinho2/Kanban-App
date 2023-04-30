@@ -9,8 +9,9 @@ import {Task} from '@/app/Types';
 interface TaskItemProps {
   item: Task;
   id: string;
-  set?: React.Dispatch<React.SetStateAction<{[key: string]: Task[];}>>,
-  acState?: {[key: string]: Task[]};
+  set: React.Dispatch<React.SetStateAction<{[key: string]: Task[];}>>,
+  board?: {[key: string]: Task[];},
+  columnTitle: string,
 }
 
 function TaskItem({item, id, set, board, columnTitle}: TaskItemProps) {

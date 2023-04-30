@@ -185,7 +185,7 @@ function BoardSectionList() {
           <DragOverlay
             dropAnimation={dropAnimation}
             >
-            {activeTaskId ? <TaskItem id={activeTaskId} item={task} /> : null}
+            {activeTaskId ? <TaskItem id={activeTaskId} item={task} set={setBoard} board={board} columnTitle={'title'} /> : null}
           </DragOverlay>
           </div>
         </div>
