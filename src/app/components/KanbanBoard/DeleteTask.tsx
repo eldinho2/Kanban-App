@@ -26,7 +26,7 @@ const DeleteTask = ({id, set, board, columnTitle}: DeleteColumnType) => {
   
   return (
     <div className="">
-      <button onClick={handlDeleteTask} className="text-2xl hover:text-red-500 text-red-900"><MdDeleteForever/></button>
+      <button onClick={handlDeleteTask} className="text-2xl hover:text-[#46475e] text-[#6b6e8c]"><MdDeleteForever/></button>
     </div>
   )
 
