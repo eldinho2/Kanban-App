@@ -174,8 +174,8 @@ function BoardSectionList() {
         <div className="flex justify-center items-center border-b-2 border-[#31313d] text-white text-3xl font-bold bg-[#21212d] h-16">
         Nova Plataforma
         </div>
-        <div className="bg-[#21212d]">
-          <div className="flex h-[668px] w-[1300px] overflow-auto">
+        <div className="bg-[#21212d] h-screen w-screen">
+          <div className="flex overflow-auto">
           {Object.keys(board).map((taskKey) => (
             <div className="min-w-[330px]" key={taskKey}>
               <BoardSection set={setBoard} id={taskKey} title={taskKey} board={board} tasks={board[taskKey]} />

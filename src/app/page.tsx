@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <>
     <div className="flex">
-      <Header />
-      <main className="min-h-screen">
+        <Header />
+      <main className="h-screen">
         <BoardSectionList />
       </main>
     </div>

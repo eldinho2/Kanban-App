@@ -15,7 +15,7 @@ function Header() {
           Kanban
         </h1>
       </div>
-      <aside className="w-[246px] bg-[#2c2c38] h-[623px] overflow-hidden">
+      <aside className="w-[246px] h-screen bg-[#2c2c38] overflow-hidden">
         <section className="flex flex-col items-center">
           <p className="text-[#b1b5c0] font-bold mt-10">Todos os quadros (3)</p>
           <div className="flex flex-col gap-6 justify-center mt-8">
